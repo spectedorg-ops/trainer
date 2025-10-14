@@ -42,7 +42,21 @@ export default function MyPayments({ onClose, currentUser }: MyPaymentsProps) {
         .order('created_at', { ascending: false })
 
       if (error) throw error
-      setPayments(data || [])
+
+      // Transformar dados para o formato correto
+      const transformedData = (data || []).map((payment: any) => ({
+        id: payment.id,
+        payment_date: payment.payment_date,
+        created_at: payment.created_at,
+        proof_text: payment.proof_text,
+        players: {
+          character_name: Array.isArray(payment.players)
+            ? payment.players[0]?.character_name || ''
+            : payment.players?.character_name || ''
+        }
+      }))
+
+      setPayments(transformedData)
     } catch (error) {
       console.error('Erro ao carregar meus pagamentos:', error)
     } finally {
