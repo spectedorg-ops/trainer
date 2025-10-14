@@ -61,7 +61,7 @@ export default function SkillHistoryList({ user, onClose }: SkillHistoryListProp
   }
 
   // Determinar quais skills mostrar baseado na vocação
-  const showMelee = user.vocation === 'EK'
+  const showMeleeSkills = user.vocation === 'EK'
   const showDistance = user.vocation === 'RP'
   const showShielding = user.vocation === 'EK'
 
@@ -96,11 +96,27 @@ export default function SkillHistoryList({ user, onClose }: SkillHistoryListProp
                       📅 {formatDate(record.recorded_at)}
                     </div>
                     <div className="grid grid-cols-2 gap-2 text-sm">
-                      {showMelee && record.melee_level !== null && (
+                      {showMeleeSkills && record.sword_level !== null && (
                         <div className="text-tibia-light-stone">
-                          ⚔️ Melee: <span className="text-tibia-gold font-semibold">
-                            {record.melee_level}
-                            {record.melee_percent !== null && ` (${record.melee_percent}%)`}
+                          ⚔️ Sword: <span className="text-tibia-gold font-semibold">
+                            {record.sword_level}
+                            {record.sword_percent !== null && ` (${record.sword_percent}%)`}
+                          </span>
+                        </div>
+                      )}
+                      {showMeleeSkills && record.club_level !== null && (
+                        <div className="text-tibia-light-stone">
+                          🔨 Club: <span className="text-tibia-gold font-semibold">
+                            {record.club_level}
+                            {record.club_percent !== null && ` (${record.club_percent}%)`}
+                          </span>
+                        </div>
+                      )}
+                      {showMeleeSkills && record.axe_level !== null && (
+                        <div className="text-tibia-light-stone">
+                          🪓 Axe: <span className="text-tibia-gold font-semibold">
+                            {record.axe_level}
+                            {record.axe_percent !== null && ` (${record.axe_percent}%)`}
                           </span>
                         </div>
                       )}
