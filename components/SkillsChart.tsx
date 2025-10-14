@@ -34,6 +34,8 @@ export default function SkillsChart({ user }: SkillsChartProps) {
           sword_percent,
           distance_level,
           distance_percent,
+          shielding_level,
+          shielding_percent,
           magic_level,
           magic_percent,
           recorded_at
@@ -51,13 +53,14 @@ export default function SkillsChart({ user }: SkillsChartProps) {
   }
 
   // Todas as skills disponíveis para seleção
-  const allSkills = ['axe_level', 'club_level', 'sword_level', 'distance_level', 'magic_level']
+  const allSkills = ['axe_level', 'club_level', 'sword_level', 'distance_level', 'shielding_level', 'magic_level']
 
   const skillNames: Record<string, string> = {
     axe_level: '🪓 Axe Fighting',
     club_level: '🔨 Club Fighting',
     sword_level: '⚔️ Sword Fighting',
     distance_level: '🏹 Distance Fighting',
+    shielding_level: '🛡️ Shielding',
     magic_level: '✨ Magic Level'
   }
 
@@ -66,6 +69,7 @@ export default function SkillsChart({ user }: SkillsChartProps) {
     club_level: '#f59e0b', // amber
     sword_level: '#6366f1', // indigo
     distance_level: '#10b981', // green
+    shielding_level: '#3b82f6', // blue
     magic_level: '#a855f7' // purple
   }
 
